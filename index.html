@@ -95,8 +95,7 @@
             transform: translateY(4px);
             box-shadow: 0 2px 0px #000000;
         }
-
-        /* Modal Overlay Styles */
+        
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -218,7 +217,6 @@
         <img src="https://github.com/ThatOneDeveloperDevWorld/devworldsource/blob/main/screenlogin1.png?raw=true" alt="Characters and Scenery" class="footer-img" onerror="">
     </div>
 
-    <!-- Login Popup Modal -->
     <div id="auth-modal" class="modal-overlay">
         <div class="modal-content">
             <button id="close-modal-btn" class="close-modal">X</button>
@@ -252,8 +250,7 @@
         }
 
         const db = firebase.firestore();
-
-        // Modal Open/Close Controls
+        
         const modal = document.getElementById('auth-modal');
         document.getElementById('open-modal-btn').addEventListener('click', () => {
             modal.classList.add('active');
@@ -271,7 +268,7 @@
             }
         });
 
-        // Email/Password Login
+        // Email/Password stuff
         document.getElementById("login-btn").addEventListener("click", () => {
             const email = document.getElementById("email-input").value;
             const pass = document.getElementById("pass-input").value;
@@ -305,7 +302,7 @@
             });
         });
 
-        // Google Sign-In with Popup & Account Selector Prompt
+        // Google Sign In or smth lol
         document.getElementById("google-login-btn").addEventListener("click", () => {
             const provider = new firebase.auth.GoogleAuthProvider();
             provider.setCustomParameters({ prompt: 'select_account' });
