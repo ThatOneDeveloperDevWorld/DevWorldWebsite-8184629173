@@ -112,7 +112,6 @@
             line-height: 1.4;
         }
 
-        /* Fixed Bottom Navigation Bar */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -155,8 +154,7 @@
         .nav-home { background: #ff70a6; }
         .nav-create { background: #55ff55; }
         .nav-profile { background: #48cae4; }
-
-        /* Popup Modal Styles */
+        
         .modal-overlay {
             display: none;
             position: fixed;
@@ -244,7 +242,6 @@
         </div>
     </div>
 
-    <!-- Bottom Navigation Bar with Home, Create (in middle), and Profile -->
     <nav class="bottom-nav">
         <a href="home.html" class="nav-item nav-home">
             <span>🏠</span>
@@ -260,7 +257,6 @@
         </a>
     </nav>
 
-    <!-- Create Confirmation Popup Modal -->
     <div class="modal-overlay" id="createModal">
         <div class="modal-box">
             <h3 class="modal-title">Create Game</h3>
@@ -299,14 +295,12 @@
                 }
 
                 try {
-                    // Fetch user document to read dev coins or calculate based on game visits
                     const userDoc = await db.collection("users").doc(user.uid).get();
                     let coins = 0;
 
                     if (userDoc.exists && userDoc.data().devCoins !== undefined) {
                         coins = userDoc.data().devCoins;
                     } else {
-                        // Fallback: calculate coins based on total visits of games created by this user
                         const gamesSnap = await db.collection("games").where("authorId", "==", user.uid).get();
                         gamesSnap.forEach(doc => {
                             const data = doc.data();
