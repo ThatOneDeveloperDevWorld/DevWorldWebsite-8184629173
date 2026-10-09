@@ -269,9 +269,9 @@
         <div>
             <label class="label-title">SELECT CATEGORY</label>
             <select id="category-select" class="category-select" onchange="switchCategory()">
-                <option value="tiles">🧱 Blocks & Tiles</option>
-                <option value="decor">🌿 Decor & Elements</option>
-                <option value="traps">⚠️ Hazards & Spikes</option>
+                <option value="tiles">Tiles</option>
+                <option value="decor">Decor</option>
+                <option value="traps">Hazards</option>
             </select>
         </div>
 
@@ -283,7 +283,7 @@
         </div>
     </div>
 
-    <div class="toast" id="toast">Saved!</div>
+    <div class="toast" id="toast">Saved</div>
 
     <script>
         const firebaseConfig = {
@@ -493,7 +493,7 @@
                 return;
             }
 
-            const gamePayload = {
+            const gameContents = {
                 title: title,
                 authorId: currentUser.uid,
                 creatorId: currentUser.uid,
@@ -508,8 +508,8 @@
 
             try {
                 showToast("Publishing level...");
-                await db.collection("games").add(gamePayload);
-                showToast("🚀 Published successfully!");
+                await db.collection("games").add(gameContents);
+                showToast("Published successfully!");
                 setTimeout(() => window.location.href = 'home.html', 1500);
             } catch (err) {
                 alert("Publish failed: " + err.message);
